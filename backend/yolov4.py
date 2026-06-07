@@ -22,8 +22,8 @@ def detect_cars(video_file):
     net = cv.dnn.readNet('yolov4-tiny.weights', 'yolov4-tiny.cfg')
 
     # Set preferable backend and target
-    net.setPreferableBackend(cv.dnn.DNN_BACKEND_CUDA)
-    net.setPreferableTarget(cv.dnn.DNN_TARGET_CUDA_FP16)
+    net.setPreferableBackend(cv.dnn.DNN_BACKEND_OPENCV)
+    net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
 
     # Initialize the detection model
     model = cv.dnn_DetectionModel(net)
@@ -87,6 +87,21 @@ def detect_cars(video_file):
         fps = frame_counter / (ending_time - starting_time)
         cv.putText(frame, f'FPS: {fps:.2f}', (20, 50), 
                    cv.FONT_HERSHEY_COMPLEX, 0.7, (0, 255, 0), 2)
+        
+        #calculating frame par current car count    changed by me
+        cv.putText(frame, f'Current Cars : {car_count}', (20, 110),
+           cv.FONT_HERSHEY_COMPLEX, 0.7, (255, 255, 0), 2)
+        
+        if car_count < 10:
+            density = "LOW"
+        elif car_count < 25:
+            density = "MEDIUM"
+        else:
+            density = "HIGH"
+
+        cv.putText(frame, f'Traffic Density : {density}', (20, 140),
+           cv.FONT_HERSHEY_COMPLEX, 0.7, (0, 0, 255), 2)
+        
         
         # Display the mean peak value on the frame
         cv.putText(frame, f'Mean Peak Cars : {mean_peak_value:.2f}', (20, 80), 

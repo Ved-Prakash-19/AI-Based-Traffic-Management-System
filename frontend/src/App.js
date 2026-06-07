@@ -6,11 +6,19 @@ function App() {
   const [selectedFiles, setSelectedFiles] = useState([]);
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [videoUrls, setVideoUrls] = useState([]);  //change by me
 
-  const handleFileChange = (e) => {
-    // Convert FileList to array and set to state
-    setSelectedFiles(Array.from(e.target.files));
-  };
+  const handleFileChange = (e) => {               //change by me
+  const files = Array.from(e.target.files);       //change by me
+                                                 //change by me
+  setSelectedFiles(files);                       //change by me
+
+  const urls = files.map(file =>                //change by me
+    URL.createObjectURL(file)                    //change by me
+  );
+
+  setVideoUrls(urls);                            //change by me
+};
 
   const handleSubmit = async (e) => {
     setLoading(true);
@@ -62,6 +70,21 @@ function App() {
               <br/>
               <button type="submit">Run Model</button>
             </form>
+
+            <div className="video-preview">           
+              {videoUrls.map((url, index) => (
+                <video
+                  key={index}
+                  width="250"
+                  height="180"
+                  controls
+                  style={{ margin: "10px" }}
+                >
+                  <source src={url} type="video/mp4" />
+                  Your browser does not support video.
+                </video>
+              ))}
+            </div>
           </section>
         </div>
 
