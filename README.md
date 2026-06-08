@@ -9,7 +9,7 @@ The Smart Adaptive Traffic Management System leverages AI and computer vision to
 
 ![1](screenshots/1.png)<br/><br/>
 ![2](screenshots/2.png)<br/><br/>
-![3](screenshots/4.PNG)
+![3](screenshots/4.png)
 
 
 ## ✨ Features
