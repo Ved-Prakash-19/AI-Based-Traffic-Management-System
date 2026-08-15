@@ -1,4 +1,4 @@
-# AI-Based-Traffic-Management-SIH
+# AI-Based-Traffic-Management
 An AI based traffic management system with real-time monitoring
 
 ## 🗒️ Overview
@@ -28,13 +28,6 @@ The Smart Adaptive Traffic Management System leverages AI and computer vision to
 - Required Python packages (listed in requirements.txt)
 
 ## 💻 Local Setup
-
-Clone the repository:
-
-```bash
-git clone https://github.com/ashish0kumar/AI-Based-Traffic-Management.git
-cd AI-Based-Traffic-Management
-```
 
 Start the backend server:
 
